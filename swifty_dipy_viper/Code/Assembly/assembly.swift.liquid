@@ -1,0 +1,48 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Dip
+import Dip_UI
+
+let {{module_info.name}}ViewControllerIdentifier = "{{module_info.name}}ViewController"
+
+class {{module_info.name}}Assembly: DipAssembly {
+    static func moduleContainer(collaboratingAssemblies: [DependencyContainer]?) -> DependencyContainer {
+        
+        let container = DependencyContainer()
+
+        container.register { {{module_info.name}}Router() }
+            .resolvingProperties { container, router in
+                router.transitionHandler = try container.resolve(tag: {{module_info.name}}ViewControllerIdentifier) as {{module_info.name}}ViewController
+        }
+
+        container.register(tag: {{module_info.name}}ViewControllerIdentifier) { {{module_info.name}}ViewController() }
+            .resolvingProperties{ container, controller in
+                controller.output = try container.resolve() as {{module_info.name}}Presenter
+        }
+
+        container.register { {{module_info.name}}Interactor() }
+            .resolvingProperties { container, interactor in
+                interactor.output = try container.resolve() as {{module_info.name}}Presenter
+        }
+
+        container.register { {{module_info.name}}Presenter() }
+            .resolvingProperties{ container, presenter in
+                presenter.view = try container.resolve(tag: {{module_info.name}}ViewControllerIdentifier) as {{module_info.name}}ViewController
+                presenter.router = try container.resolve() as {{module_info.name}}Router
+                presenter.interactor = try container.resolve() as {{module_info.name}}Interactor
+        }
+
+        if let collaboratingAssemblies = collaboratingAssemblies {
+            container.collaborate(with: collaboratingAssemblies)
+        }
+
+        DependencyContainer.uiContainers.append(container)
+        return container
+    }
+}

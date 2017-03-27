@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wBx-VO-fgN">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Results View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="SearchResultsViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SearchResultsViewController" customModule="Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Enter search term" translatesAutoresizingMaskIntoConstraints="NO" id="pGL-VE-gnD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bng-y3-I43"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDM-SF-peA" userLabel="Itunes Container View">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="WPX-97-Fsb" kind="embed" id="MSD-84-aNn"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPN-fe-Tby">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="KZp-5U-yK2" kind="embed" id="8Pg-cC-NNf"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EDM-SF-peA" firstAttribute="top" secondItem="pGL-VE-gnD" secondAttribute="bottom" id="Ads-Pz-GWY"/>
+                            <constraint firstAttribute="trailing" secondItem="sPN-fe-Tby" secondAttribute="trailing" id="JgC-Mu-2Zp"/>
+                            <constraint firstItem="sPN-fe-Tby" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Qhy-je-fQK"/>
+                            <constraint firstItem="pGL-VE-gnD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="VhU-Rg-6Nj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sPN-fe-Tby" secondAttribute="bottom" id="Y3i-qq-efX"/>
+                            <constraint firstItem="sPN-fe-Tby" firstAttribute="top" secondItem="pGL-VE-gnD" secondAttribute="bottom" id="Ziv-nu-JQN"/>
+                            <constraint firstAttribute="trailing" secondItem="pGL-VE-gnD" secondAttribute="trailing" id="jYa-4J-o5s"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EDM-SF-peA" secondAttribute="bottom" id="mhB-aX-hhE"/>
+                            <constraint firstItem="pGL-VE-gnD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sc8-YK-VLu"/>
+                            <constraint firstItem="EDM-SF-peA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="taE-iL-F9O"/>
+                            <constraint firstAttribute="trailing" secondItem="EDM-SF-peA" secondAttribute="trailing" id="yOJ-lS-hjl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="tn7-03-tuN">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="lfR-cD-lL7">
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="iTunes"/>
+                                <segment title="GitHub"/>
+                            </segments>
+                            <connections>
+                                <action selector="showService:" destination="BYZ-38-t0r" eventType="valueChanged" id="kO3-XW-A1l"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="dipTag" value="SearchResultsViewController"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="githubContainerView" destination="sPN-fe-Tby" id="1gk-tT-3CS"/>
+                        <outlet property="itunesContainerView" destination="sPN-fe-Tby" id="OAm-d8-MRm"/>
+                        <outlet property="searchBar" destination="pGL-VE-gnD" id="YrB-Ec-jHD"/>
+                        <outlet property="serviceSegmentedControl" destination="lfR-cD-lL7" id="mSQ-XS-ysV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1464.8" y="138.98050974512745"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tv3-Eb-I2P">
+            <objects>
+                <navigationController storyboardIdentifier="SearchResultsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="wBx-VO-fgN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KhJ-jp-Fwo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="FCc-2H-yYl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Jx-PG-Eft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="525.60000000000002" y="138.98050974512745"/>
+        </scene>
+        <!--Itunes View Controller-->
+        <scene sceneID="8QX-nE-H8l">
+            <objects>
+                <viewController storyboardIdentifier="ItunesViewController" id="WPX-97-Fsb" customClass="ItunesViewController" customModule="Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uhL-T7-3e6"/>
+                        <viewControllerLayoutGuide type="bottom" id="RCc-vq-9XY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LS4-6F-HMq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2V5-mj-G6d">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2V5-mj-G6d" firstAttribute="top" secondItem="LS4-6F-HMq" secondAttribute="top" id="HfV-T8-jbp"/>
+                            <constraint firstItem="2V5-mj-G6d" firstAttribute="leading" secondItem="LS4-6F-HMq" secondAttribute="leading" id="YzX-4j-pbU"/>
+                            <constraint firstAttribute="trailing" secondItem="2V5-mj-G6d" secondAttribute="trailing" id="eUd-GQ-leX"/>
+                            <constraint firstAttribute="bottom" secondItem="2V5-mj-G6d" secondAttribute="bottom" id="uzk-iS-t51"/>
+                        </constraints>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="dipTag" value="ItunesViewController"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="tableView" destination="2V5-mj-G6d" id="FRw-Q8-hb9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="foj-sB-oMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2318" y="502"/>
+        </scene>
+        <!--Github View Controller-->
+        <scene sceneID="E5g-QL-Fxo">
+            <objects>
+                <viewController storyboardIdentifier="GithubViewController" id="KZp-5U-yK2" customClass="GithubViewController" customModule="Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CSH-DQ-BzF"/>
+                        <viewControllerLayoutGuide type="bottom" id="hXT-xC-fLg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Voy-Ab-nWK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f0d-IB-jjK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="f0d-IB-jjK" secondAttribute="trailing" id="0N9-m4-ehW"/>
+                            <constraint firstAttribute="bottom" secondItem="f0d-IB-jjK" secondAttribute="bottom" id="CxG-gq-g6T"/>
+                            <constraint firstItem="f0d-IB-jjK" firstAttribute="leading" secondItem="Voy-Ab-nWK" secondAttribute="leading" id="nLr-9A-YYk"/>
+                            <constraint firstItem="f0d-IB-jjK" firstAttribute="top" secondItem="Voy-Ab-nWK" secondAttribute="top" id="w3M-sD-AoS"/>
+                        </constraints>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="dipTag" value="GithubViewController"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="tableView" destination="f0d-IB-jjK" id="vuT-mX-nh3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pxa-RM-0of" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2318" y="-157"/>
+        </scene>
+    </scenes>
+</document>

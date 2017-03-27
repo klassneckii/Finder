@@ -1,0 +1,50 @@
+//
+//  {{ prefix }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+
+class {{ module_info.name }}ViewTests: XCTestCase {
+
+    let view = {{ module_info.name }}ViewController()
+    let presenter = MockPresenter()
+
+    override func setUp() {
+        super.setUp()
+        view.output = presenter
+    }
+
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+
+    func testViewIsReadyCall() {
+        // given
+
+        // when
+        view.viewDidLoad()
+
+        // then
+        XCTAssertTrue(presenter.viewIsReadyDidCall)
+    }
+
+    class MockPresenter: {{ module_info.name }}ViewOutput {
+
+        var viewIsReadyDidCall = false
+        var finishButtonDidTriggeredDidCall = false
+
+        func viewIsReady() {
+            viewIsReadyDidCall = true
+        }
+
+        func finishButtonDidTriggered(from viewController: UIViewController) {
+            finishButtonDidTriggeredDidCall = true
+        }
+    }
+
+}

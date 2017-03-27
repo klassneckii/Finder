@@ -1,0 +1,49 @@
+//
+//  {{ prefix }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+import Dip
+import Dip_UI
+
+class {{ module_info.name }}ModuleAssemblyTests: XCTestCase {
+    
+    var moduleContainer: DependencyContainer!
+
+    override func setUp() {
+        super.setUp()
+        moduleContainer = {{ module_info.name }}Assembly.moduleContainer()
+    }
+
+    override func tearDown() {
+        moduleContainer = nil
+        super.tearDown()
+    }
+
+    func testConfigureModuleForViewController() {
+        // given
+
+        // when
+        let view = try! moduleContainer.resolve({{ module_info.name }}ViewController.self, tag: {{ module_info.name }}ViewControllerIdentifier) as! {{ module_info.name }}ViewController
+        let presenter: {{ module_info.name }}Presenter = view.output as! {{ module_info.name }}Presenter
+        let interactor: {{ module_info.name }}Interactor = presenter.interactor as! {{ module_info.name }}Interactor
+        let router: {{ module_info.name }}Router = presenter.router as! {{ module_info.name }}Router
+
+        // then
+        XCTAssertNotNil(view, "View nil after module configuration")
+        XCTAssertNotNil(presenter, "Presenter nil after module configuration")
+        XCTAssertNotNil(interactor, "Interactor nil after module configuration")
+        XCTAssertNotNil(router, "Router nil after module configuration")
+
+        XCTAssertTrue(presenter === view.output as! {{ module_info.name }}Presenter, "Presenter has wrong output")
+        XCTAssertTrue(view === presenter.view, "Presenter has wrong view")
+        XCTAssertTrue(view === router.transitionHandler, "Router has wrong transitiong handler")
+        XCTAssertTrue(interactor === presenter.interactor as! {{ module_info.name }}Interactor, "Presenter has wrong interactor")
+        XCTAssertTrue(router === presenter.router as! {{ module_info.name }}Router, "Presenter has wrong router")
+        XCTAssertTrue(presenter === interactor.output as! {{ module_info.name }}Presenter, "Interactor has wrong presenter")
+    }
+}
