@@ -9,4 +9,5 @@
  - The BusinessLogic layer is built using Service-Oriented Architecture.
  - The Core layer is built using compound operations concept.
  - DIP framefork used for dependency injection.
+ - Swift 3
  - UI and Unit tests included!
